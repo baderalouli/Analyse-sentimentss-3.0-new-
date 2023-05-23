@@ -1,0 +1,29 @@
+<!-- pages/result.html -->
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/stylere.css' %}">
+
+<h1 class="titre">Résultats de l'analyse des commentaires</h1>
+
+<div class="result-container">
+  <div class="percentage">
+    <h2>Pourcentages :</h2>
+    <p>Positif : {{ positive_percentage }}%</p>
+    <p>Négatif : {{ negative_percentage }}%</p>
+    <p>Neutre : {{ neutral_percentage }}%</p>
+  </div>
+  
+  <div class="comments">
+    <h2>Commentaires :</h2>
+    {% for comment, sentiment in comments_with_sentiments %}
+      <div class="comment">
+        <p>{{ comment }}</p>
+        <p>Sentiment : {{ sentiment }}</p>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock content %}

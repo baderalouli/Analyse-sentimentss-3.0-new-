@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <div class="container">
+        <div class="forms-container">
+            <div class="signin-signup">
+            <form class="sign-in-form" method="post">
+                {% csrf_token %}
+                <h2 class="title">Sign Up</h2>
+                <div class="input-field">
+                    <i class='bx bxs-user'></i>
+                    <input type="text" class="form-control" id="username" name="username" placeholder="username"   required>
+                </div>
+                <div class="input-field">
+                    <i class='bx bxs-lock-alt'></i>
+                    <input type="email" class="form-control" id="Email" name="email"   placeholder="Email" required>
+                </div>
+                <div class="input-field">
+                    <i class='bx bxs-lock-alt'></i>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="password" required>
+                </div>
+                <div class="input-field">
+                    <i class='bx bxs-lock-alt'></i>
+                    <input type="password" class="form-control" id="confirm_password" name="confirm_password"  placeholder="comfir password" required>
+                </div>
+                <input type="submit" value="Sign Up" class="btn solid">
+                <p class="social-text">Or sign Up with social platforms </p>
+
+                <div class="social-media">
+                    <a href="#" class="social-icon">
+                        <i class='bx bxl-facebook'></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class='bx bxl-twitter'></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class='bx bxl-google'></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class='bx bxl-linkedin'></i>
+                    </a>
+                </div>
+            </form>
+
+    </div>
+        </div>
+            <div class="panels-container">
+                <div class="panel left-panel">
+                    <div class="content">
+                        <img src="{% static 'image/5.png' %}" style="width: 60%;height: 40%; position: relative; top: -15px;"  class="image" alt=""><br><br>
+                        <h3>New here?</h3>
+                        <p>welcome to your smart App to perform analysis of
+                            feelings on youtube comments <br> <br><br>
+                            <a style="
+                            background-color: #594caf;
+                            color: white; 
+                            border: none; 
+                            padding: 10px 20px; 
+                            text-align: center; 
+                            text-decoration: none; 
+                            display: inline-block;
+                            font-size: 16px; 
+                            margin: 4px 2px; 
+                            cursor: pointer; 
+                            border-radius: 25px; "  href="/">login</a>
+                        </p>    
+                    </div>
+                        <img src="{% static 'image/2.png' %}" class="image" alt="">
+                </div>
+            </div>
+        </div>
+    </div>    
+
+
+
+
+
+
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  

@@ -1,0 +1,79 @@
+/* styles.css */
+
+/* Style pour le conteneur principal des résultats */
+.titre{
+    text-align: center;
+}
+
+.result-container {
+    margin: 20px;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #eaeaea;
+    border-radius: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Style pour la section des pourcentages */
+  .percentage {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .percentage h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .percentage p {
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+  
+  /* Style pour la section des commentaires */
+  .comments {
+    margin-bottom: 20px;
+  }
+  
+  .comments h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .comment {
+    background-color: #f7f7f7;
+    border: 1px solid #eaeaea;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 15px;
+  }
+  
+  .comment p {
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+  
+  .comment p:last-child {
+    font-weight: bold;
+    color: #333333;
+  }
+  
+  .comment:nth-child(even) {
+    background-color: #ffffff;
+  }
+  
+  .comment:nth-child(even) p:last-child {
+    color: #ff8800;
+  }
+  
+  .comment:nth-child(odd) {
+    background-color: #f2f2f2;
+  }
+  
+  .comment:nth-child(odd) p:last-child {
+    color: #3366cc;
+  }
+  
+  
