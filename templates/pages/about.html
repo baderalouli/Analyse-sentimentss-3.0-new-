@@ -1,12 +1,10 @@
+<!-- pages/about.html -->
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
-
 <link rel="stylesheet" href="{% static 'css/styleboo.css' %}">
-
-
         <!-- Responsive navbar-->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#2a2f37;">
             <div class="container">
                 <a href="about"><img src="{% static 'image/5.png' %}" style="width: 40%;height: 10%;"  class="image" alt=""></a>>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
@@ -20,91 +18,78 @@
             </div>
         </nav>
         <!-- Page header with logo and tagline-->
-        <header class="py-5 bg-light border-bottom mb-4">
+        <header class="py-5 bg-light border-bottom mb-4"style="with:100%;height: 490px; background: linear-gradient(rgba(44, 50, 38, 0.5), #2a2f37), url({% static 'image/CAP15.png' %} ) center/cover no-repeat">
             <div class="container">
-                <div class="text-center my-5">
-                    <h1 class="fw-bolder">Welcome to YouTube comment sentiment analysis</h1>
-                    <p class="lead mb-0">The best service in the world</p>
+                <div class="text-center my-5"style="color:aliceblue;position: relative;top:-70px; ">
+                    <h1 class="fw-bolder"style='font-size:50px;' >Welcome to YouTube comment sentiment analysis</h1>
+                    <img src="{% static 'image/CAP16.png' %}"style="with:100%;height:70%;" alt="">
+                    <p class="lead mb-0"style='font-size:30px;'>The best service in the world</p>
                 </div>
             </div>
         </header>
         <!-- Page content-->
-        <div class="container">
+        <div class="container" style='position: relative;left:170px;'>
             <div class="row">
                 <!-- Blog entries-->
                 <div class="col-lg-8">
                     <!-- Featured blog post-->
                     <div class="card mb-4">
-                        <div class="card-header" style="text-align: center;">lien</div>
+                        <div class="card-header" style="text-align: center;background-color:#69707c;color:black;" >Link</div>
                         <div class="card-body"><br>
                             <form class="row g-5" method="post">
                                 {% csrf_token %}
                                 <div class="col-auto">
-                                <h4>Enter le lien de votre video </h4><br>
+                                <h4 style="font-family: 'Times New Roman', Times, serif; font-size: 30px;">Enter the link of your video </h4><br>
                                 </div>
                                 <div class="col-auto">
                                   <label for="inputPassword2" class="visually-hidden">video_url</label>
-                                  <input type="url" class="form-control" id="inputPassword2" name="link" placeholder=" link ">
+                                  <input type="url" class="form-control" id="inputPassword2" style="width: 300px;" name="link" placeholder=" link ">
                                 </div>
                                 <div class="col-auto">
-                                  <button type="submit" class="btn btn-primary mb-3">Envoyer</button>
+                                  <button type="submit" class="btn "style="background-color:#69707c; color:white; ">Send</button>
                                 </div>
                               </form>
                         </div>
                     </div>
-                    <!-- Nested row for non-featured blog posts-->
-                    <div class="row">
+                    <div class="col-lg-13">
+                        <div class="card mb-4"style="background-color:#69707c;">
+                            <div class="card-body">
+                                <div class="input-group">
+                                    <h2 class="card-title">Perform sentiment analysis on YouTube comments</h2>
+                                    <p class="card-text"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="row">
                         <div class="col-lg-6">
-                            <!-- Blog post-->
                             <div class="card mb-4">
+                                <div class="card-header" style="text-align: center;background-color:#69707c;color:black;">The importance of AI in the web </div>
                                 <a href="#!"><img src="{% static 'image/CAP12.jpg' %}" style="width: 100%;height: 40%; position: relative;"  class="image" alt=""></a>
                                 <div class="card-body"><br>
-                                    <h2 class="card-title h3">l'importance de AI dans le web </h2><br>
-                                    <p class="card-text">
-                                        L'intelligence artificielle (IA) joue un rôle essentiel dans le domaine du web en offrant des avantages significatifs pour les utilisateurs. Grâce à l'IA, les expériences web peuvent être personnalisées en fonction des préférences individuelles, offrant un contenu et des recommandations pertinents. L'IA permet également d'automatiser diverses tâches, ce qui améliore l'efficacité et la productivité. Elle facilite l'analyse des données massives générées sur le web, fournissant des informations précieuses pour la prise de décisions éclairées.</p>
-                                
-                                        <div class="small text-muted">6 Mai  2023</div>
-                                    </div>
+                                    <p class="card-text">Artificial intelligence (AI) plays a vital role in the web domain by providing significant benefits for users. Using AI, web experiences can be personalized based on individual preferences, delivering relevant content and recommendations. AI also helps automate various tasks, which improves efficiency and productivity. It facilitates the analysis of massive data generated on the web, providing valuable information for informed decision-making.</p>
+                                    <div class="small text-muted">6 Mai  2023</div>
+                                </div>
                             </div>
                         </div>
                         <div class="col-lg-6">
-                            <!-- Blog post-->
                             <div class="card mb-4">
+                                <div class="card-header" style="text-align: center;background-color:#69707c;color:black;">Application intelligente</div>
                                 <a href="#!">  <img src="{% static 'image/CAP11.jpg' %}" style="width: 100%;height: 40%; position: relative;"  class="image" alt=""><br><br></a>
                                 <div class="card-body">
-                                    <h4 class="card-title h2">Application intelligente</h4><br>
-                                    <p class="card-text">Une application intelligente analyse les commentaires YouTube pour évaluer les sentiments exprimés. Elle utilise l'intelligence artificielle et le traitement du langage naturel pour déterminer si les commentaires sont positifs, négatifs ou neutres. Cela permet aux créateurs de contenu et aux entreprises de comprendre la réception de leurs vidéos et de surveiller leur réputation en ligne. L'application offre une analyse automatisée des sentiments pour obtenir des informations précieuses sur l'opinion des utilisateurs.</p>
+                                    <p class="card-text">A smart app analyzes YouTube comments to assess the sentiments expressed. It uses artificial intelligence and natural language processing to determine whether reviews are positive, negative or neutral. This allows content creators and businesses to understand the reception of their videos and monitor their online reputation. The app offers automated sentiment analysis to gain valuable insights into user opinion.</p>
                                     <div class="small text-muted">23 Avril  2023</div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- Side widgets-->
-                <div class="col-lg-4">
-                    <!-- Search widget-->
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <div class="input-group">
-                                <div class="small text-muted">20 Avril 2023</div>
-                                <h2 class="card-title">Perform sentiment analysis on YouTube comments</h2>
-                                <p class="card-text"></p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Side widget-->
-                    <div class="card mb-4">
-                        <div class="card-header" style="text-align: center;">Categories</div>
-                        <div class="card-body"></div>
-                    </div>
-                </div>
             </div>
         </div>
+
+
         <!-- Footer-->
         <footer class="py-5 bg-dark">
             <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p></div>
         </footer>
-    
-
-
 {% endblock content %}

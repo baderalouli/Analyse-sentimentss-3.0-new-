@@ -1,6 +1,10 @@
 /* styles.css */
 
 /* Style pour le conteneur principal des résultats */
+.titre{
+    text-align: center;
+}
+
 .result-container {
     margin: 20px;
     padding: 20px;

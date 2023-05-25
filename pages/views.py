@@ -28,7 +28,6 @@ def login(request):
 
     return render(request, 'pages/login.html')
 
-
 def signup(request):
     if request.method == 'POST':
         # Récupération des données du formulaire
@@ -36,7 +35,6 @@ def signup(request):
         email = request.POST.get('email')
         password = request.POST.get('password')
         confirm_password = request.POST.get('confirm_password')
-
         # Création d'un nouvel objet Signup et sauvegarde dans la base de données
         signup = Signup(username=username, email=email, password=password, confirm_password=confirm_password)
         signup.save()
@@ -44,8 +42,6 @@ def signup(request):
         return redirect('login')
 
     return render(request, 'pages/signup.html')
-
-
 
 # Fonction pour extraire l'ID de la vidéo à partir du lien YouTube
 def extract_video_id(link):
@@ -57,7 +53,6 @@ def extract_comments(video_id):
     youtube = build('youtube', 'v3', developerKey=api_key)
     comments = []
     nextPageToken = None
-
     while True:
         response = youtube.commentThreads().list(
             part='snippet',
@@ -65,11 +60,9 @@ def extract_comments(video_id):
             pageToken=nextPageToken,
             textFormat='plainText'
         ).execute()
-
         for item in response['items']:
             comment = item['snippet']['topLevelComment']['snippet']['textDisplay']
             comments.append(comment)
-
         if 'nextPageToken' in response:
             nextPageToken = response['nextPageToken']
         else:
@@ -90,20 +83,15 @@ def clean_comments(comments):
         cleaned_comments.append(cleaned_comment)
     return cleaned_comments
 
-positive_count = 0
-negative_count = 0
-neutral_count = 0
-
 sentiment_mapping = {0: 'négatif', 1: 'neutre', 2: 'positif'}
 
-driver = GraphDatabase.driver("bolt://44.200.57.70:7687", auth=("neo4j", "gang-mathematics-overvoltages"))
+driver = GraphDatabase.driver("bolt://18.208.197.42:7687", auth=("neo4j", "farm-calibrations-stove"))
 
 def store_comments(video_id, comments, sentiments):
     global positive_count, negative_count, neutral_count
     positive_count = 0
     negative_count = 0
     neutral_count = 0
-
     with driver.session() as session:
         for comment, sentiment in zip(comments, sentiments):
             # Convertir la valeur du sentiment en numérique
@@ -121,7 +109,6 @@ def store_comments(video_id, comments, sentiments):
                 negative_count += 1
             elif sentiment == 'neutral':
                 neutral_count += 1
-
 # Fonction pour effectuer l'analyse de sentiment et stocker les résultats dans Neo4j
 def analyze_comments(video_id):
     global positive_count, negative_count, neutral_count
@@ -151,27 +138,35 @@ def analyze_comments(video_id):
     result_clf = clf.predict(vectorized_comments)
     result_clf = [sentiment_mapping[sentiment] for sentiment in result_clf]
     store_comments(video_id, cleaned_comments, result_clf)
+    # Compter les sentiments
+    total_count = len(result_clf)
+    for sentiment in result_clf:
+        if sentiment == 'positif':
+            positive_count += 1
+        elif sentiment == 'négatif':
+            negative_count += 1
+        elif sentiment == 'neutre':
+            neutral_count += 1
     # Calculer les pourcentages de chaque sentiment
     total_count = len(result_clf)
     positive_percentage = (positive_count / total_count) * 100
     negative_percentage = (negative_count / total_count) * 100
     neutral_percentage = (neutral_count / total_count) * 100
-
     # Créer une liste de commentaires avec leurs sentiments correspondants
     comments_with_sentiments = list(zip(cleaned_comments, result_clf))
 
     return positive_percentage, negative_percentage, neutral_percentage,comments_with_sentiments
-
-
 
 def about(request):
     if request.method == 'POST':
         link = request.POST['link']
         video_id = extract_video_id(link)
         positive_percentage, negative_percentage, neutral_percentage, comments_with_sentiments = analyze_comments(video_id)
-        message = 'L\'analyse des commentaires a été effectuée avec succès.'
+        # Formater les pourcentages avec 2 chiffres après la virgule
+        positive_percentage = "{:.2f}".format(positive_percentage)
+        negative_percentage = "{:.2f}".format(negative_percentage)
+        neutral_percentage = "{:.2f}".format(neutral_percentage)
         return render(request, 'pages/result.html', {
-            'message': message,
             'positive_percentage': positive_percentage,
             'negative_percentage': negative_percentage,
             'neutral_percentage': neutral_percentage,
@@ -180,118 +175,5 @@ def about(request):
     else:
         return render(request, 'pages/about.html')
 
-
-    
-
 def result(request):
     return render(request,'pages/result.html')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    # for comment in comments:
-    #      sentiment = model.predict([comment['text']])
-    #      if sentiment == 'positive':
-    #          positive_count += 1
-    #      elif sentiment == 'negative':
-    #          negative_count += 1
-
-    # comment['sentiment'] = sentiment
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
